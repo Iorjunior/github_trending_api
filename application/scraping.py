@@ -57,8 +57,8 @@ def scraping_repos(html_souce):
     return repos
 
 
-def get_trending(language):
-    html_souce, status_code = fetch(language=language)
+def get_trending(language, since):
+    html_souce, status_code = fetch(language=language, since=since)
 
     if html_souce and status_code == 200:
         repos = scraping_repos(html_souce)
