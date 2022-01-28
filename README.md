@@ -77,16 +77,18 @@ Observe o final do log, lá estara o link para sua aplicação.
 
 Atualmente a API tem 2 endpoints e aceita a query: `since`:
 
-| Endpoints             | Retorno                                   |
-| --------------------- | ----------------------------------------- |
-| /                     | Retorna o trending geral do Dia           |
-| /?since=weekly        | Retorna o trending geral da Semana        |
-| /python               | Retorna o trending da linguagem na Semana |
-| /python?since=monthly | Retorna o trendind da linguagem no Mês    |
+| Endpoints             | Retorno                                   | Parametros Aceitos  |
+| --------------------- | ----------------------------------------- | --------------------|
+| /                     | Retorna informações sobre a api           |           |
+| /repo                 | Retorna o trending geral de Repositorios do Dia    | `since`   |
+| /repo/[language]      | Retorna o trending de Repositorios da linguagem no Dia | `since`   |
+| /dev                  | Retorna o trendind de Desenvolvedores do Dia    | `since`   |
+| /dev/[language]       | Retorna o trendind de Desenvolvedores da linguagem no Dia    | `since`   |
 
-Exemplo de retorno:
+Exemplos de retorno:
 
 ```json
+ /repo
  [
     {
     "author": "public-apis",
@@ -98,6 +100,22 @@ Exemplo de retorno:
     "repo_url": "https://github.com/public-apis/public-apis",
     "stars": 178065
   },
+  ...
+ ],
+ /dev
+ [
+   {
+    "rank_position": 1,
+    "name": "PySimpleGUI",
+    "username": "PySimpleGUI",
+    "dev_url": "https://github.com/PySimpleGUI",
+    "avatar": "https://github.com/PySimpleGUI.png",
+      "popularRepo": {
+          "repo_name": "PySimpleGUI",
+          "description": "Launched in 2018. It's 2022 and PySimpleGUI is actively developed & supported...",
+          "url": "https://github.com/PySimpleGUI/PySimpleGUI"
+        }
+    },
   ...
  ]
 ```
