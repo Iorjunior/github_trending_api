@@ -1,4 +1,3 @@
-import imp
 from flask import Flask
 
 
@@ -9,5 +8,11 @@ def create_app():
 
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+
+    from .repo import repo as repo_blueprint
+    app.register_blueprint(repo_blueprint, url_prefix='/repo')
+
+    from .dev import dev as dev_blueprint
+    app.register_blueprint(dev_blueprint, url_prefix='/dev')
 
     return app
