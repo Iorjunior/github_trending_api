@@ -24,7 +24,7 @@ Clone o repositorio:
 Abra a pasta, e instale as dependencias:
 
 ```sh
- pip install requiriments.txt
+ pip install requirements.txt
 ```
 
 Se estiver usando Poetry:
