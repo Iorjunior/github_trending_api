@@ -1,10 +1,12 @@
 from flask import Blueprint, request, jsonify
+from .cache import cache
 from . import scraping
 
 dev = Blueprint('dev', __name__)
 
 
 @dev.route("/", methods=['GET'])
+@cache.cached(timeout=60*5)
 def get_trending():
     since = request.args.get('since') if request.args.get(
         'since') else 'daily'
@@ -18,6 +20,7 @@ def get_trending():
 
 
 @dev.route("/<language>", methods=['GET'])
+@cache.cached(timeout=60*5)
 def get_language_trending(language):
     since = request.args.get('since') if request.args.get(
         'since') else 'daily'
